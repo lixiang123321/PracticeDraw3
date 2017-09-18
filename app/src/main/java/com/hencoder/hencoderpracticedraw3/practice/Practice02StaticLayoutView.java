@@ -2,8 +2,11 @@ package com.hencoder.hencoderpracticedraw3.practice;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.annotation.Nullable;
+import android.text.Layout;
+import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.View;
@@ -24,8 +27,11 @@ public class Practice02StaticLayoutView extends View {
         super(context, attrs, defStyleAttr);
     }
 
+    private final StaticLayout staticLayout;
+
     {
         textPaint.setTextSize(60);
+        staticLayout = new StaticLayout(text, textPaint, 600, Layout.Alignment.ALIGN_NORMAL, 1, 0, true);
     }
 
     @Override
@@ -34,6 +40,11 @@ public class Practice02StaticLayoutView extends View {
 
         // 使用 StaticLayout 代替 Canvas.drawText() 来绘制文字，
         // 以绘制出带有换行的文字
-        canvas.drawText(text, 50, 100, textPaint);
+        canvas.drawText(text, 50, 100, textPaint); // left bottom point is the start point.
+
+        textPaint.setColor(Color.BLUE);
+        canvas.translate(50, 100);
+        staticLayout.draw(canvas);// left top point is the start point.
+        // staticLayout keep the reference with paint. so paint change color, it will know.
     }
 }

@@ -9,7 +9,8 @@ import android.view.View;
 
 public class Practice09SetTextScaleXView extends View {
     Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    String text = "Hello HenCoder";
+//    String text = "Hello HenCoder";
+    String text = "H ";
 
     public Practice09SetTextScaleXView(Context context) {
         super(context);
@@ -24,7 +25,7 @@ public class Practice09SetTextScaleXView extends View {
     }
 
     {
-        paint.setTextSize(60);
+        paint.setTextSize(45);
 
         // 使用 Paint.setTextScaleX() 来改变文字宽度
     }
@@ -34,5 +35,12 @@ public class Practice09SetTextScaleXView extends View {
         super.onDraw(canvas);
 
         canvas.drawText(text, 50, 100, paint);
+        float textWidth = paint.measureText(text);
+
+        paint.setTextScaleX(1.5f);
+        canvas.drawText(text, 50 + textWidth + 10, 100, paint);
+
+        // test result : only change the width, exclude height.
+
     }
 }

@@ -33,6 +33,15 @@ public class Practice08SetTextSkewXView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
+        paint.setTextSkewX(10);// 10, anti - clockwise
         canvas.drawText(text, 50, 100, paint);
+
+        paint.setTextSkewX(-2);// 2, clockwise
+        canvas.drawText(text, 50, 200, paint);
+
+        paint.setTextSkewX(-0.5f);
+        canvas.drawText(text, 50, 300, paint);
+
+
     }
 }
